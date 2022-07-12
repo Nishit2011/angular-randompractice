@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Nishit';
+  public city = "Bengaluru, KA, India"
 }

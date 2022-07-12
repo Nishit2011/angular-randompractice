@@ -1,5 +1,5 @@
 import { getSafePropertyAccessString } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import axios from 'axios';
 
 @Component({
@@ -33,6 +33,12 @@ import axios from 'axios';
   <div *ngSwitchCase= "'orange'">You picked orange</div>
   <div *ngSwitchCase= "'green'">You picked green</div>
   </div>
+
+  <div *ngFor="let item in basket; index as i">
+  <h2>{{i}} {{item}}</h2>
+  </div>
+
+  {{parentData}}
   `,
   styles:[`
     .error{
@@ -61,6 +67,10 @@ export class TestComponent implements OnInit {
   public name =""
   public isPossible = true
   public color="orange"
+  public basket = ["biscuits", "cakes", "mobile phones", "pastries"]
+
+
+  @Input() public parentData: any;
   
 
   public messageClasses = {
