@@ -17,6 +17,15 @@ import axios from 'axios';
   <button (click)="logMessage(myInput.value)">Fetch</button>
   <input [(ngModel)]="name" type="text" />
   {{name}}
+  <div *ngIf="isPossible;then thenBlock; else elseBlock">
+  
+  </div>
+  <ng-template #thenBlock>
+  It is 100% possible
+  </ng-template>
+  <ng-template #elseBlock>
+  It is not possible
+  </ng-template>
   `,
   styles:[`
     .error{
@@ -43,6 +52,7 @@ export class TestComponent implements OnInit {
   public isPresent = false
   public greeting = ""
   public name =""
+  public isPossible = true
   
 
   public messageClasses = {
