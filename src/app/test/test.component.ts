@@ -26,6 +26,13 @@ import axios from 'axios';
   <ng-template #elseBlock>
   It is not possible
   </ng-template>
+
+
+  <div [ngSwitch] = "color">
+  <div *ngSwitchCase= "'red'">You picked red</div>
+  <div *ngSwitchCase= "'orange'">You picked orange</div>
+  <div *ngSwitchCase= "'green'">You picked green</div>
+  </div>
   `,
   styles:[`
     .error{
@@ -53,6 +60,7 @@ export class TestComponent implements OnInit {
   public greeting = ""
   public name =""
   public isPossible = true
+  public color="orange"
   
 
   public messageClasses = {
