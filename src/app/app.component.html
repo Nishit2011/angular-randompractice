@@ -1,7 +1,7 @@
 
 <div class="toolbar" role="banner">
-  Welcome {{title}}
-<app-test [parentData]="city"></app-test>
+  <h1>{{message}}</h1>
+<app-test (childEvent)="message=$event"  [parentData]="city"></app-test>
 </div>
 
 

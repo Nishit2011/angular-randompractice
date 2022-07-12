@@ -1,5 +1,5 @@
 import { getSafePropertyAccessString } from '@angular/compiler';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import axios from 'axios';
 
 @Component({
@@ -38,7 +38,9 @@ import axios from 'axios';
   <h2>{{i}} {{item}}</h2>
   </div>
 
-  {{parentData}}
+  {{city}}
+
+  <button (click)="sendEvent()">Send Event</button>
   `,
   styles:[`
     .error{
@@ -70,7 +72,7 @@ export class TestComponent implements OnInit {
   public basket = ["biscuits", "cakes", "mobile phones", "pastries"]
 
 
-  @Input() public parentData: any;
+  @Input('parentData') public city="";
   
 
   public messageClasses = {
@@ -89,6 +91,9 @@ export class TestComponent implements OnInit {
     color: "maroon"
   }
 
+  //sending data from child to parent
+  @Output() public childEvent = new EventEmitter()
+
   constructor() { }
 
   ngOnInit(): void {
@@ -102,5 +107,8 @@ export class TestComponent implements OnInit {
   }
   logMessage(value: string){
    this.greeting = value
+  }
+  sendEvent(){
+    this.childEvent.emit("Hey there. You're Welcome!!!")
   }
 }
