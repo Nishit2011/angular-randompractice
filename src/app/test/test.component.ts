@@ -1,3 +1,4 @@
+import { TestService } from './../test.service';
 import { getSafePropertyAccessString } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import axios from 'axios';
@@ -34,13 +35,18 @@ import axios from 'axios';
   <div *ngSwitchCase= "'green'">You picked green</div>
   </div>
 
-  <div *ngFor="let item in basket; index as i">
+  <div *ngFor="let item of basket; index as i">
   <h2>{{i}} {{item}}</h2>
   </div>
 
   {{city}}
 
   <button (click)="sendEvent()">Send Event</button>
+
+
+  <div *ngFor="let emp of empList">
+  {{emp.name}}
+  </div>
   `,
   styles:[`
     .error{
@@ -70,6 +76,7 @@ export class TestComponent implements OnInit {
   public isPossible = true
   public color="orange"
   public basket = ["biscuits", "cakes", "mobile phones", "pastries"]
+  public empList: { id: number; name: string; age: number; }[] = [];
 
 
   @Input('parentData') public city="";
@@ -94,10 +101,10 @@ export class TestComponent implements OnInit {
   //sending data from child to parent
   @Output() public childEvent = new EventEmitter()
 
-  constructor() { }
+  constructor(public testSvc: TestService) { }
 
   ngOnInit(): void {
-   
+    this.getEmployees()
   }
 
   onClick(event: MouseEvent){
@@ -110,5 +117,11 @@ export class TestComponent implements OnInit {
   }
   sendEvent(){
     this.childEvent.emit("Hey there. You're Welcome!!!")
+  }
+
+  getEmployees(){
+     this.empList = this.testSvc.getEmployees();
+    
+
   }
 }
