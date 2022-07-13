@@ -8,17 +8,22 @@ import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
 import { FormsModule } from '@angular/forms';
 import { PostsComponent } from './posts/posts.component';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent,
-    PostsComponent
+    routingComponents
+
+    // TestComponent,
+    // PostsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
+
   ],
   providers: [TestService, PostService],
   bootstrap: [AppComponent]

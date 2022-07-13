@@ -1,8 +1,15 @@
 
 <div class="toolbar" role="banner">
   <h1>{{message}}</h1>
-<app-test (childEvent)="message=$event"  [parentData]="city"></app-test>
-<app-posts></app-posts>
+<!-- <app-test (childEvent)="message=$event"  [parentData]="city"></app-test> -->
+<!-- <app-posts></app-posts> -->
 </div>
+
+<nav>
+  <a routerLink="/posts" routerLinkActive="active">Posts</a>
+  <a routerLink="/test" routerLinkActive="active">Test</a>
+</nav>
+
+<router-outlet></router-outlet>
 
 
