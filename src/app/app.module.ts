@@ -9,11 +9,13 @@ import { TestComponent } from './test/test.component';
 import { FormsModule } from '@angular/forms';
 import { PostsComponent } from './posts/posts.component';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
+    
 
     // TestComponent,
     // PostsComponent
