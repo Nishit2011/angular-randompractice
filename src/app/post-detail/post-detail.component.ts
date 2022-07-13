@@ -6,8 +6,11 @@ import { ActivatedRoute, Router, ParamMap } from '@angular/router';
   template: `<h2>
   PostId----> {{postId}}
   </h2>
-  <a (click)="goPrevious()">Previous</a>
-  <a (click)="goNext()">Next</a>
+  <div>
+  <button (click)="goToPosts()">Back</button>
+  </div>
+  <button (click)="goPrevious()">Previous</button>
+  <button (click)="goNext()">Next</button>
   `,
   styleUrls: ['./post-detail.component.css']
 })
@@ -33,6 +36,10 @@ export class PostDetailComponent implements OnInit {
   goNext(){
     let nextId = parseInt(this.postId) +1
     this.router.navigate(['/posts', nextId])
+  }
+  goToPosts(){
+    let selectedId = this.postId? this.postId: null
+    this.router.navigate(['/posts', {id: selectedId}])
   }
 
 }
